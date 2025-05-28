@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="bg">
+<head>
+  <meta charset="UTF-8">
+  <title>Търсене на човек по ID</title>
+</head>
+<body>
+  <h2>Търсене на човек</h2>
+  <input type="text" id="searchId" placeholder="Въведете ID">
+  <button onclick="searchPerson()">Търси</button>
+  <p id="result"></p>
+
+  <script>
+    // Масив с хора
+    const people = [
+      { id: 1, name: "Иван Петров", age: 30, city: "София" },
+      { id: 2, name: "Мария Георгиева", age: 25, city: "Пловдив" },
+      { id: 3, name: "Георги Иванов", age: 40, city: "Варна" },
+    ];
+
+    // Функцията за търсене
+    function searchPerson() {
+      const inputId = document.getElementById("searchId").value.trim();
+      const id = Number(inputId); // Преобразуване към число
+
+      const person = people.find(p => p.id === id); // Търсене по ID
+
+      const resultElement = document.getElementById("result");
+
+      if (person) {
+        resultElement.textContent = `Име: ${person.name}, Възраст: ${person.age}, Град: ${person.city}`;
+      } else {
+        resultElement.textContent = "Няма човек с такова ID.";
+      }
+    }
+  </script>
+</body>
+</html>

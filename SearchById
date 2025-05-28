@@ -3,36 +3,48 @@
 <head>
   <meta charset="UTF-8">
   <title>Търсене на човек по ID</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+    }
+    input, button {
+      padding: 8px;
+      font-size: 16px;
+    }
+    #result {
+      margin-top: 20px;
+      font-weight: bold;
+    }
+  </style>
 </head>
 <body>
-  <h2>Търсене на човек</h2>
-  <input type="text" id="searchId" placeholder="Въведете ID">
+
+  <h1>Търсене на човек по ID</h1>
+  <input type="text" id="searchId" placeholder="Въведи ID">
   <button onclick="searchPerson()">Търси</button>
-  <p id="result"></p>
+
+  <div id="result"></div>
 
   <script>
-    // Масив с хора
     const people = [
-      { id: 1, name: "Иван Петров", age: 30, city: "София" },
-      { id: 2, name: "Мария Георгиева", age: 25, city: "Пловдив" },
-      { id: 3, name: "Георги Иванов", age: 40, city: "Варна" },
+      { id: "1", name: "Иван Иванов", age: 30, city: "София" },
+      { id: "2", name: "Мария Петрова", age: 25, city: "Пловдив" },
+      { id: "3", name: "Георги Георгиев", age: 40, city: "Варна" }
     ];
 
-    // Функцията за търсене
     function searchPerson() {
       const inputId = document.getElementById("searchId").value.trim();
-      const id = Number(inputId); // Преобразуване към число
-
-      const person = people.find(p => p.id === id); // Търсене по ID
-
-      const resultElement = document.getElementById("result");
+      const person = people.find(p => p.id === inputId);
+      const resultDiv = document.getElementById("result");
 
       if (person) {
-        resultElement.textContent = `Име: ${person.name}, Възраст: ${person.age}, Град: ${person.city}`;
+        resultDiv.textContent = `Име: ${person.name}, Възраст: ${person.age}, Град: ${person.city}`;
       } else {
-        resultElement.textContent = "Няма човек с такова ID.";
+        resultDiv.textContent = "Няма човек с това ID.";
       }
     }
   </script>
+
 </body>
 </html>
